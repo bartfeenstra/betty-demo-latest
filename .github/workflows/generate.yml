@@ -62,13 +62,17 @@ jobs:
           sudo apt-get install poppler-utils
 
       - name: Prepare the source code
-        run: git clone -b 0.5.x https://github.com/bartfeenstra/betty.git .
+        run: git clone -b 0.5.x https://github.com/bartfeenstra/betty.git
 
       - name: Install Python packages
-        run: pip install .
+        run: |
+          cd betty
+          pip install .
 
       - name: Generate the demonstration site
-        run: betty demo -vv --path ./demo --url https://bartfeenstra.github.io/betty-demo-latest
+        run: |
+          cd betty
+          betty demo -vv --path ../demo --url https://bartfeenstra.github.io/betty-demo-latest
 
       - name: Upload the demonstration site
         uses: actions/upload-pages-artifact@v3
