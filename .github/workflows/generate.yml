@@ -61,6 +61,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install poppler-utils
 
+      - name: Prepare the source code
+        run: |
+          git clone -b 0.5.x https://github.com/bartfeenstra/betty.git
+          cd betty
+
       - name: Install Python packages
         run: pip install .
         shell: bash
